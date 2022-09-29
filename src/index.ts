@@ -24,6 +24,7 @@ app.get('/abc', async (req, res) => {
 
 app.listen(port, async () => {
   console.log(port);
+  console.log(process.env.NODE_ENV);
 });
 
 cron.schedule('*/10 * * * *', async () => {
