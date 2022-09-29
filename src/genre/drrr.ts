@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 import axios from 'axios';
 import formData from 'form-data';
 import cheerio from 'cheerio';
@@ -58,7 +58,11 @@ const getData = html => {
 };
 
 export const drrr = async (params: { TARGET: string }) => {
-  const hour = moment().hours();
+  const now = moment(new Date());
+  now.tz('Asia/Tokyo').format('ha z');
+
+  const hour = now.hours();
+  const minute = now.minute();
 
   const html = await login();
   const data = await getData(html);
@@ -74,7 +78,7 @@ export const drrr = async (params: { TARGET: string }) => {
     }
   }
 
-  if (hour === 1 && moment().minutes() >= 50) {
+  if (hour === 1 && minute >= 50) {
     await notification('drrr追跡ボット', '探索終了', [
       // process.env.EXPO_ID,
       process.env.EXPO_ID2,
