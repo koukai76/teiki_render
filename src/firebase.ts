@@ -26,7 +26,7 @@ export const read = async (id: string): Promise<{ href: string }[]> => {
         resolve(JSON.parse(snapshot.data().data));
       })
       .catch(error => {
-        reject(error);
+        reject([]);
       });
   });
 };
