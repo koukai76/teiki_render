@@ -20,13 +20,13 @@ const db = getFirestore(firebaseApp);
 const coll = collection(db, DB_NAME);
 
 export const read = async (id: string): Promise<{ href: string }[]> => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     getDoc(doc(coll, id))
       .then(snapshot => {
         resolve(JSON.parse(snapshot.data().data));
       })
       .catch(error => {
-        reject([]);
+        resolve([]);
       });
   });
 };
