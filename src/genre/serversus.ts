@@ -63,6 +63,6 @@ export const serversus = async () => {
   } catch (error) {
     console.log(error);
   } finally {
-    connection.end();
+    // connection.end();
   }
 };

@@ -105,6 +105,6 @@ module.exports = async () => {
     }
   } catch (error) {
   } finally {
-    connection.end();
+    // connection.end();
   }
 };
