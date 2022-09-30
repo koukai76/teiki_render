@@ -47,7 +47,7 @@ export const serversus = async () => {
       await notification('serversus', String(res.status), [
         process.env.EXPO_ID2,
       ]);
-      return;
+      throw new Error();
     }
 
     const obj = res.data;
@@ -60,9 +60,9 @@ export const serversus = async () => {
     }
 
     await query('UPDATE users SET first_name = ? WHERE id = ?', [ret, 1]);
-
-    connection.end();
   } catch (error) {
     console.log(error);
+  } finally {
+    connection.end();
   }
 };

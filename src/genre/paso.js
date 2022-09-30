@@ -68,7 +68,7 @@ module.exports = async () => {
     if (res == null) {
       console.log('paso req fail');
       await noti('paso req fail');
-      return;
+      throw new Error();
     }
 
     const doc = parse(res.data);
@@ -95,7 +95,7 @@ module.exports = async () => {
     const diff = result.filter(i => before.indexOf(i) == -1);
 
     if (diff.length === 0) {
-      return;
+      throw new Error();
     }
 
     // 通知
