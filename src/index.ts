@@ -53,9 +53,9 @@ cron.schedule('*/10 * * * *', async () => {
 
     // drrr
     if (hour >= 22 || hour <= 1) {
-      await drrr({ TARGET: process.env.DRRR_TARGET }).catch(e =>
-        console.log(e)
-      );
+//       await drrr({ TARGET: process.env.DRRR_TARGET }).catch(e =>
+//         console.log(e)
+//       );
     }
   } catch (error) {
     console.log(error);
